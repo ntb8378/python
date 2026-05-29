@@ -120,13 +120,10 @@ while True:
     elif choice == 4:
 
         print("\n===== CẢNH BÁO TỒN KHO =====")
-
         if laptop < 10:
             print(f"[CẢNH BÁO] Laptop sắp hết (Chỉ còn {laptop} sản phẩm)")
-
         if phone < 10:
             print(f"[CẢNH BÁO] Phone sắp hết (Chỉ còn {phone} sản phẩm)")
-
         if tablet < 10:
             print(f"[CẢNH BÁO] Tablet sắp hết (Chỉ còn {tablet} sản phẩm)")
 # chức năng 5: thoát
