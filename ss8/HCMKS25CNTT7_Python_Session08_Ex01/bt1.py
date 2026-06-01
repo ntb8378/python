@@ -1,126 +1,65 @@
-username = ""
-video_title = ""
-video_description = ""
-hashtag_list = []
-
 while True:
-    print("\n===== HỆ THỐNG KIỂM DUYỆT VÀ CHUẨN HÓA NỘI DUNG VIDEO TIKTOK =====")
-    print("1. Nhập dữ liệu và xem báo cáo thống kê")
-    print("2. Chuẩn hóa tên tài khoản TikTok")
-    print("3. Kiểm tra hashtag hợp lệ")
-    print("4. Tìm kiếm và thay thế từ khóa trong mô tả video")
-    print("5. Thoát chương trình")
+    print("+======================================+")
+    print("|   HỆ THỐNG QUẢN LÝ NỘI DUNG TIKTOK   |")
+    print("| 1.Nhập và phân tích thông tin video")
+    print("| 2.Chuẩn hóa tên tài khoản")
+    print("| 3.Kiểm tran hashtag hợp lệ")
+    print("| 4.Tìm kiếm và thay thế từ khóa")
+    print("| 5.Thoát chương trình")
+    print("+======================================+")
+    choice = input(">Mời bạn chọn chức năng (1-5):")
 
-    choice = input("Nhập lựa chọn: ").strip()
-
-    if not choice.isdigit():
-        print("Lựa chọn không hợp lệ")
-        continue
-
-    choice = int(choice)
-
-    if choice < 1 or choice > 5:
-        print("Lựa chọn không hợp lệ")
-        continue
-
-    if choice == 1:
-        username = input("Nhập tên tài khoản: ")
-        video_title = input("Nhập tiêu đề video: ")
-        video_description = input("Nhập mô tả video: ")
-        hashtags = input("Nhập danh sách hashtag (cách nhau bởi dấu phẩy): ")
-
-        if username.strip() == "":
-            print("Tên tài khoản không được rỗng")
-            continue
-
-        if video_description.strip() == "":
-            print("Mô tả video không được rỗng")
-            continue
-
-        username = username.strip()
-        video_title = video_title.strip().title()
-        video_description = video_description.strip()
-
-        hashtag_list = hashtags.split(",")
-
-        for i in range(len(hashtag_list)):
-            hashtag_list[i] = hashtag_list[i].strip()
-
-        print("\n===== BÁO CÁO THỐNG KÊ =====")
-        print("Tên tài khoản:", username)
-        print("Tiêu đề video:", video_title)
-        print("Mô tả video:", video_description)
-        print("Độ dài mô tả:", len(video_description))
-        print("Số lượng từ:", len(video_description.split()))
-        print("Danh sách hashtag:", hashtag_list)
-        print("Số lượng hashtag:", len(hashtag_list))
-        print("Mô tả chữ thường:", video_description.lower())
-        print("Mô tả chữ hoa:", video_description.upper())
-
-    elif choice == 2:
-        if username.strip() == "":
-            print("Chưa có dữ liệu tài khoản")
-            continue
-
-        normalized_username = username.strip().lower()
-
-        if not normalized_username.startswith("@"):
-            normalized_username = "@" + normalized_username
-
-        print("Tên tài khoản ban đầu:", username)
-        print("Tên tài khoản chuẩn hóa:", normalized_username)
-
-    elif choice == 3:
-        hashtag = input("Nhập hashtag cần kiểm tra: ").strip()
-
-        if hashtag == "":
-            print("Hashtag không được rỗng")
-            continue
-
-        if not hashtag.startswith("#"):
-            print("Hashtag phải bắt đầu bằng ký tự #")
-            continue
-
-        if " " in hashtag:
-            print("Hashtag không được chứa khoảng trắng")
-            continue
-
-        if len(hashtag) < 2:
-            print("Hashtag phải có ít nhất 2 ký tự")
-            continue
-
-        valid = True
-
-        for char in hashtag[1:]:
-            if not (char.isalnum() or char == "_"):
-                valid = False
-                break
-
-        if not valid:
-            print("Hashtag chỉ được chứa chữ cái, chữ số hoặc dấu gạch dưới")
-            continue
-
-        hashtag_list.append(hashtag)
-        print("Hashtag hợp lệ")
-
-    elif choice == 4:
-        if video_description.strip() == "":
-            print("Chưa có mô tả video")
-            continue
-
-        find_keyword = input("Nhập từ khóa cần tìm: ")
-        replace_keyword = input("Nhập từ khóa thay thế: ")
-
-        if find_keyword in video_description:
-            count = video_description.count(find_keyword)
-            new_description = video_description.replace(find_keyword, replace_keyword)
-            print("Mô tả sau khi thay thế:")
-            print(new_description)
-            print("Số lần xuất hiện:", count)
-            video_description = new_description
-        else:
-            print("Không tìm thấy từ khóa trong mô tả video")
-
-    elif choice == 5:
-        print("Thoát chương trình")
-        break
+    match (choice):
+        case "1":
+            print("Nhập và phân tích thông tin video")
+            user_name = input("Nhập tên tài khoản:")
+            title = input("Nhập tiêu đề video:")
+            description = input("Nhập mô tả video:")
+            list_hashtag = input("Nhập danh sách hashtag (cách nhau bởi dấu phẩy): ")
+            print("====Đã qua xử lý, hiển thị!=====")
+            print(f"Tên tài khoản: {user_name.strip()}")
+            print(f"Tên tiêu đề: {title.title().strip()}")
+            print(f"Mô tả: {description.strip()}")
+            print(f"Độ dài mô tả: {len(description)}")
+            count_space = description.count(" ") + 1
+            print(f"Số lượng từ trong mô tả: {count_space}")
+            # "#hashtag1, #hashtag2"
+            list_temp = list_hashtag.split(",")
+            new_list_hashtag = "".join(list_temp)
+            print(f"Danh sách hashtag: {new_list_hashtag}")
+            # Dùng kiến thức mới ( len(list) )
+            count_hashtag = len(list_temp);
+            print(f"Số lượng hashtag là: {count_hashtag}")
+            print(f"Mô tả video đã chuyển thành thường: {description.lower()}")
+            print(f"Mô tả video đã chuyển thành hoa: {description.upper()}")
+        case "2":
+            print(f"Tên tài khoản trước khi chuẩn hóa: {user_name}")
+            print("Tên tài khoản sau khi chuẩn hóa: ", "@" + user_name.lower())
+        case "3":
+            hashtag = input("Nhập hashtag: ")
+            if (hashtag == ""):
+                print("Không được rỗng!")
+            elif (not hashtag.startswith("#")):
+                print("phải bắt đầu bằng #")
+            elif (" " in hashtag):
+                print("Không được chưa khoảng trắng")
+            elif (len(hashtag) < 2):
+                print("Phải chứa tối thiểu 2 kí tự") 
+            else:
+                print("Hashtag hợp lệ!")
+                list_hashtag = list_hashtag + hashtag
+                print(f"Danh sách hashtag mới: {list_hashtag}")
+        case "4":
+            find_word = input("Nhập từ khóa cần tìm: ")
+            count_word = description.count(find_word)
+            if (count_word > 0):
+                description = description.replace(find_word, "Từ khóa mới")
+                print(f"Mô tả sau khi thay thế:  {description}")
+                print(f"Số lần xuất hiện từ khóa: {count_word}")
+            else:
+                print("Từ khóa không tìm thấy!")
+        case "5":
+            print("Thoát chương trình")
+            break
+        case _:
+            print("Lựa chọn không hợp lệ!")
