@@ -51,8 +51,7 @@ while True:
         search = int(input("nhập id cần xóa"))
         for item in Parkings:
             if search == item["id"]:
-                item["id"] = xoa
-                xoa.clear()
+                Parkings.remove(item)
                 print(f"đã xóa xe ID {item["id"]} thành công!")
             else:
                 print("Không tim thấy xe để xóa")
