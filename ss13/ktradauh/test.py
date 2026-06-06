@@ -45,7 +45,7 @@ while True:
                 f"{item["id"]:<5}| "
                 f"{type_text:<10}| "
                 f"{item["owner"]:<8}"
-            )
+            )   
             break
     if choice == "3":
         search = int(input("nhập id cần xóa"))
