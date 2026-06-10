@@ -21,20 +21,20 @@ def show_products(products_list):
         print("Cửa hàng hiện chưa có sản phẩm nào!")
     else:
         print("--- DANH SÁCH SẢN PHẨM ---")
-        print(f"{"ID":<10} | {"Tên sản phẩm":<20} | {"Giá bán":<20}")
+        print(f"{'ID':<10} | {'Tên sản phẩm':<20} | {'Giá bán':<20}")
         print("--------------------------------------------------------")
         for item in products_list:
-            print(f"{item["id"]:<10} | {item["name"]:<20} | {item["price"]:<20}")
+            print(f"{item['id']:<10} | {item['name']:<20} | {item['price']:<20}")
         print("--------------------------------------------------------")
     
 
 def check_str(prompt):
     while True:
-        vlue= input(prompt).strip()
-        if vlue == "":
+        value= input(prompt).strip()
+        if value == "":
             print("không được để trống!")
             continue
-        return vlue
+        return value
     
 def check_int(prompt):
     while True:
@@ -48,31 +48,20 @@ def check_int(prompt):
             print("sai định dạng")
 
 
-def check_float(prompt):
-    while True:
-        try:
-            value= float(input(prompt))
-            if value <=0:
-                print("phải lớn hơn 0!")
-                continue
-            return value
-        except:
-            print("sai định dạng")
-
 def add_product():
     input_id = check_str("nhập mã sản phẩm (ID):")
     for item in products_list:
         if input_id.lower() == item["id"].lower():
             print("id đã tồn tại!")
             return
-        else:
-            input_name = check_str("nhập tên sản phẩm:")
-            input_price = check_float("nhập giá bán:")
-            
-            list_new = {'id': input_id, 'name': input_name, 'price': input_price}
-            
-            products_list.append(list_new)
-            print("Thêm sản phẩm thành công!")
+    else:
+        input_name = check_str("nhập tên sản phẩm:")
+        input_price = check_int("nhập giá bán:")
+        
+        list_new = {'id': input_id, 'name': input_name, 'price': input_price}
+        
+        products_list.append(list_new)
+        print("Thêm sản phẩm thành công!")
 
 def update_price():
     finding= False
@@ -80,14 +69,13 @@ def update_price():
     for item in products_list:
         if search_id.lower() == item["id"].lower():
             finding = True
-            for item in products_list:
-                print(f"Tìm thấy sản phầm: {item["name"]} (Giá hiện tại: {item["price"]})")
-                update_new_price = check_float("Nhập giá mới:")
+            print(f"Tìm thấy sản phầm: {item['name']} (Giá hiện tại: {item['price']})")
+            update_new_price = check_int("Nhập giá mới:")
 
-                
+            item["price"]= update_new_price
 
-                print("cập nhật giá thành công!")
-                return
+            print("cập nhật giá thành công!")
+            return
     if not finding:
         notfind = (f"Không tìm thấy sản phẩm có mã {search_id} !")
         print(notfind)
@@ -95,8 +83,8 @@ def update_price():
 
 
 def main():
-    menu()
     while True:
+        menu()
         choice = input("nhập lựa chọn:")
         match choice:
             case "1":
@@ -104,12 +92,11 @@ def main():
             case "2":
                 add_product()
             case "3":
-                pass
+                update_price()
             case "4":
                 print("Cảm ơn bạn đã sử dụng phần mềm!")
                 print("[CHương trình đã kết thúc]")
                 break
             case _:
                 print("lựa chọn không hợp lệ!")
-                break
 main()
