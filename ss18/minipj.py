@@ -46,19 +46,19 @@ def add_new_order(orders):
             if (input_id.lower() == item.get("id").lower()):
                 print("đã tồn tại!")
                 return
-            else:        
-                input_name = validate_check("nhập tên đại lý:")
-                input_price = validate_check("nhập giá trị đơn hàng:")
-                
+        else:        
+            input_name = validate_check("nhập tên đại lý:")
+            input_price = validate_check("nhập giá trị đơn hàng:")
+            
 
-                list_new={'id': input_id,
-                        'name': input_name,
-                            'price': input_price ,
-                            'status': "Unpaid "}
-                
-                orders.append(list_new)
-                print("thêm thành công!")
-            break
+            list_new={'id': input_id,
+                    'name': input_name,
+                        'price': input_price ,
+                        'status': "Unpaid "}
+            
+            orders.append(list_new)
+            print("thêm thành công!")
+        
 
 def update_payment_status(orders):
         found= False
