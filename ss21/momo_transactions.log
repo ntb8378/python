@@ -1,0 +1,3 @@
+2026-06-15 21:27:03 - INFO - Deposit successful: +20000 VND. Current Balance: 20000
+2026-06-15 21:27:07 - ERROR - ValueError: Invalid numeric input for deposit.
+2026-06-15 21:27:14 - ERROR - InvalidAmountError: Attempted to process -2299323 VND.
