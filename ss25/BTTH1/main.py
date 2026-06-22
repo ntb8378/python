@@ -46,22 +46,23 @@ class BankAccount:
 def main():
     current_account = None
     while True:
-        choice = int(input("""===== VIETCOMBANK DIGIBANK SIMULATOR =====
+        choice = int(input("""
+                ===== VIETCOMBANK DIGIBANK SIMULATOR =====
                         1. Mở tài khoản mới
                         2. Xem thông tin tài khoản
                         3. Giao dịch Nạp / Rút tiền
                         4. Cập nhật Tên chủ tài khoản
                         5. Đổi phí giao dịch hệ thống
                         6. Thoát chương trình
-                        ==========================================
+                ==========================================
                         Chọn chức năng (1-6):"""))
         match choice:
             case 1:
                new_account = None
                while True: 
                    number_bank_account = input("nhập vào số TK: ")
-                   account_new_name = input("nhập vào Tên TK: ")
                    if BankAccount.validate_account_number(number_bank_account):
+                        account_new_name = input("nhập vào Tên TK: ")
                         new_account = BankAccount(number_bank_account, account_new_name)
                         current_account = new_account
                         print("Đã thêm tài khoản mới thành công")
