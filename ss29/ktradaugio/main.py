@@ -60,6 +60,7 @@ class RoboBus(ElectricBus, AutonomousFeature):
                 print("[Thành công]: Khởi tạo xe thành công!")
                 print("[MRO Architecture]:")
 
+
                 for cls in RoboBus.__mro__:
                     print(cls.__name__)
                 return RoboBus()
